@@ -1,0 +1,991 @@
+#include<stdlib.h>
+#include<windows.h>
+#include<GL/glut.h>
+#include<stdio.h>
+#include<math.h>
+void display();
+void GoMenu(int value);
+void fish1();
+void fish2();
+void fish4();
+void land();
+void sea();
+void sky();
+void water();
+void man();
+void man1();
+void wire();
+void scaleman2();
+void scalefish11();
+void scalefish12();
+void scalefish13();
+void foodeatingfish();
+void scaleman();
+void scaleman1();
+GLfloat x,y,a,b,theta;
+void man1();
+float move, angle;
+
+void init(void)
+{
+	glClearColor(1.0,1.0,1.0,1.0);
+	glColor3f(0.0,0.0,0.0);
+     glPointSize(4.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0.0,499.0,0.0,499.0);
+}
+void fish1()
+{
+	glColor3f(0.3,0.0,0.7);
+	glBegin(GL_POLYGON);//body
+	glVertex2i(100,100);
+	glVertex2i(125,125);
+	glVertex2i(150,100);
+	glVertex2i(125,75);
+	glVertex2i(100,100);
+     glEnd();
+glColor3f(1.0,0.0,0.9);
+	glBegin(GL_LINES);//body
+	glVertex2i(147,105);
+	glVertex2i(147,95);
+	glEnd();
+glColor3f(1.0,0.0,0.9);
+	glBegin(GL_LINES);//body
+	glVertex2i(135,115);
+	glVertex2i(135,85);
+	glEnd();
+glColor3f(1.0,0.0,0.9);
+	glBegin(GL_LINES);//body
+	glVertex2i(127,125);
+	glVertex2i(127,75);
+	glEnd();
+ glBegin(GL_POLYGON);//fins1
+	glColor3f(1.0,0.0,0.9);
+	glVertex2i(125,125);
+	glVertex2i(120,160);
+	glVertex2i(125,140);
+	glVertex2i(130,160);
+	glVertex2i(125,125);
+	 glEnd();
+glBegin(GL_POLYGON);//fin2
+	glColor3f(1.0,0.0,0.9);
+	glVertex2i(125,75);
+	glVertex2i(120,45);
+	glVertex2i(125,60);
+	glVertex2i(130,45);
+	glVertex2i(125,75);
+	glEnd();
+  glBegin(GL_POLYGON);//tail
+	glColor3f(1.0,0.0,0.9);
+    glVertex2i(150,100);
+	glVertex2i(175,125);
+	glVertex2i(175,75);
+	glVertex2i(150,100);
+	glEnd();
+glColor3f(0.2,0.0,0.6);
+	glBegin(GL_LINES);//body
+	glVertex2i(165,95);
+	glVertex2i(172.5,102.5);
+	glEnd();
+glColor3f(0.3,0.0,0.7);
+	glBegin(GL_LINES);//body
+	glVertex2i(162.5,100);
+	glVertex2i(172.5,110);
+	glEnd();
+glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2i(115,105);
+	glEnd();
+}
+void fish2()
+{
+	glColor3f(0.9,0.8,0.2);
+	glBegin(GL_POLYGON);//body
+	glVertex2i(200,350);
+	glVertex2i(225,375);
+	glVertex2i(250,350);
+	glVertex2i(225,325);
+	 glEnd();
+glColor3f(0.9,0.0,0.0);
+	glBegin(GL_LINES);//body
+	glVertex2i(205,355);
+	glVertex2i(205,345);
+	glEnd();
+glColor3f(0.9,0.0,0.0);
+	glBegin(GL_LINES);//body
+	glVertex2i(215,365);
+	glVertex2i(215,335);
+	glEnd();
+glColor3f(0.9,0.0,0.0);
+	glBegin(GL_LINES);//body
+	glVertex2i(225,375);
+	glVertex2i(225,325);
+	glEnd();
+	glBegin(GL_POLYGON);//fins1
+	glColor3f(0.9,0.0,0.0);
+	glVertex2i(225,325);
+	glVertex2i(205,300);
+	glVertex2i(215,335);
+	 glEnd();
+glBegin(GL_POLYGON);//tail
+	glColor3f(0.9,0.0,0.0);
+	glVertex2i(200,350);
+	glVertex2i(175,375);
+	glVertex2i(175,325);
+	glVertex2i(200,350);
+	glEnd();
+    glBegin(GL_POLYGON);//fin2
+	glColor3f(0.9,0.0,0.0);
+    glVertex2i(225,375);
+	glVertex2i(205,400);
+	glVertex2i(215,365);
+	glEnd();
+glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2i(235,355);
+	glEnd();
+}
+
+void land()
+{
+	glColor3f(1.0,0.6,0.0);
+	glBegin(GL_POLYGON);
+	glVertex2i(0,350);
+	glVertex2i(50,350);
+	glVertex2i(350,0);
+	glVertex2i(0,0);
+	glVertex2i(0,350);
+	glEnd();
+}
+
+void scaleman2()
+{
+	glPushMatrix();
+	glTranslated(-110.0,220.0,0.0);
+	glScaled(0.9,0.9,0);
+	man1();
+	glPopMatrix();
+	//glFlush();
+}
+void scalefish11()
+{
+    glPushMatrix();
+glScaled(0.7,0.7,0.0);
+	glTranslated(170,35,0);
+	fish1();
+		glTranslated(180,75,0);
+	fish1();
+			glTranslated(200,335,0);
+	fish1();
+	glTranslated(200,-65,0);
+	fish1();
+	glTranslated(-50,-315,0);
+	fish1();
+	glPopMatrix();
+}
+void scalefish12()
+{
+    glPushMatrix();
+glScaled(0.7,0.7,0.0);
+	glTranslated(200,30,0);
+	fish2();
+		glTranslated(270,-20,0);
+	fish2();
+		glTranslated(200,-100,0);
+	fish2();
+		glTranslated(70,-180,0);
+	fish2();
+     	glTranslated(-800,300,0);
+	fish2();
+	glPopMatrix();
+}
+void scalefish13()//last scene
+{
+	      glPushMatrix();
+glScaled(0.5,0.6,0.0);
+	glTranslated(200,80,0);
+	fish1();
+		glTranslated(-240,-165,0);
+	fish2();
+		glTranslated(100,50,0);
+	fish2();
+}
+void man1()
+{
+	glColor3ub(0,0,0);
+	glPushMatrix();
+		glTranslatef(270,105,0);
+		glutSolidTorus(1,15,100,90);
+	glPopMatrix();
+//fill face
+	glColor3ub(255,191,128);
+	glPushMatrix();
+		glTranslatef(270,105,0);
+		glutSolidTorus(7,7,100,90);
+	glPopMatrix();
+//draw nose  eyebrow
+	glColor3ub(0,0,0);
+	glBegin(GL_LINES);
+		glVertex2i(270,107);
+		glVertex2i(270,100);
+ 		glVertex2i(261,113);
+		glVertex2i(267,113);
+ 		glVertex2i(273,113);
+		glVertex2i(279,113);
+	glEnd();
+ // eyes
+	glBegin(GL_POLYGON);
+		glVertex2i(263,111);
+		glVertex2i(265,111);
+		glVertex2i(265,109);
+		glVertex2i(263,109);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2i(275,111);
+		glVertex2i(277,111);
+		glVertex2i(277,109);
+		glVertex2i(275,109);
+	glEnd();
+ // mouth
+	glBegin(GL_POLYGON);
+		glVertex2i(266,97);
+		glVertex2i(270,95);
+		glVertex2i(274,97);
+		glVertex2i(270,95);
+	glEnd();
+//shirt
+	 glBegin(GL_POLYGON);
+		glColor3ub(55,50,70);
+		glVertex2i(259,90);
+		glVertex2i(281,90);
+		glVertex2i(296,79);
+		glVertex2i(291,71);
+		glVertex2i(286,75);
+		glVertex2i(286,55);
+		glVertex2i(254,55);
+		glVertex2i(254,75);
+		glVertex2i(249,70);
+		glVertex2i(244,79);
+	glEnd();
+//hands
+	glBegin(GL_POLYGON);
+		glColor3ub(255,191,128);
+		glVertex2i(295,78);
+		glVertex2i(305,63);
+		glVertex2i(297,64);
+		glVertex2i(292,72);
+	glEnd();
+	glBegin(GL_POLYGON);
+		 glVertex2i(305,63);
+		glVertex2i(286,48);
+		 glVertex2i(286,55);
+		 glVertex2i(297,64);
+	glEnd();
+	//glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINES);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2i(286,55);
+	glVertex2i(340,55);
+	glEnd();
+	glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	//glPointSize(250.0);
+	glVertex2i(340,55);
+	glEnd();
+	glBegin(GL_LINES);
+
+	glVertex2i(340,55);
+	glVertex2i(340,1.5);
+	glEnd();
+glBegin(GL_POLYGON);//body
+glColor3f(0.256,1.0,0.693);
+	glVertex2i(335,1);
+	glVertex2i(340,-15);
+	glVertex2i(345,1);
+    glVertex2i(350,-25);
+glVertex2i(340,-50);
+glVertex2i(330,-25);
+glVertex2i(335,1.5);
+glEnd();
+glBegin(GL_POLYGON);//back
+glColor3f(0.6,0.8,0.5);
+glVertex2i(340,-50);
+	glVertex2i(349,-65);
+	glVertex2i(332.5,-65);
+    glVertex2i(340,-50);
+	glEnd();
+glBegin(GL_POLYGON);
+glColor3f(0.6,0.8,0.5);//fin1
+glVertex2i(330,-25);
+	glVertex2i(325,-40);
+	glVertex2i(332.5,-30);
+    glVertex2i(325,-40);
+	glEnd();
+glBegin(GL_POLYGON);
+glColor3f(0.6,0.8,0.5);//fin2
+glVertex2i(350,-25);
+	glVertex2i(355,-40);
+	glVertex2i(347.5,-30);
+    glVertex2i(350,-25);
+	glEnd();
+	glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2i(338.5,-8);
+	glEnd();
+//hands2
+	glBegin(GL_POLYGON);
+glColor3ub(255,191,128);
+		glVertex2i(245,78);
+		glVertex2i(235,63);
+		glVertex2i(243,64);
+		glVertex2i(248,72);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex2i(235,63);
+		glVertex2i(254,48);
+		glVertex2i(254,55);
+		glVertex2i(243,64);
+	glEnd();
+ // belt
+	glBegin(GL_POLYGON);
+		glColor3ub(100,120,130);
+		glVertex2i(286,55);
+		glVertex2i(254,55);
+		glVertex2i(254,50);
+		glVertex2i(286,50);
+	glEnd();
+// collar
+	glBegin(GL_POLYGON);
+		glColor3ub(200,140,110);
+		glVertex2i(259,90);
+		glVertex2i(281,90);
+		glVertex2i(276,80);
+		glVertex2i(264,80);
+	glEnd();
+	glBegin(GL_TRIANGLES);
+		glColor3ub(20,140,110);
+		glVertex2i(270,87);
+		glVertex2i(275,80);
+		glVertex2i(265,80);
+	glEnd();
+
+// pant
+	glBegin(GL_POLYGON);
+		glColor3ub(10,10,10);
+		glVertex2i(285,50);
+		glVertex2i(254,50);
+		glVertex2i(250,15);
+		glVertex2i(260,15);
+		glVertex2i(263,48);
+		glVertex2i(280,15);
+		glVertex2i(290,15);
+		glEnd();
+}
+
+void water()
+{
+	glColor3f(0.3,0.4,1.0);
+	glBegin(GL_POLYGON);
+    glVertex2i(180,200);
+	glVertex2i(500,200);
+	glVertex2i(500,0);
+	glVertex2i(350,0);
+	glVertex2i(180,200);
+	glEnd();
+}
+void wire()
+{
+	 glColor3f(0.0,0.0,0.0);// for food wire
+		glBegin(GL_POLYGON);
+			glVertex2i(375,500);
+			glVertex2i(375,460);
+			glVertex2i(372.5,460);
+			glVertex2i(372.5,500);
+			glEnd();
+			glColor3f(1.0,1.0,0.0);//for food block
+		glBegin(GL_POLYGON);
+        glVertex2i(368,460);
+          glVertex2i(368,445);
+         glVertex2i(382,445);
+        glVertex2i(382,460);
+        glEnd();
+}
+void scaleman()
+{
+	glPushMatrix();
+		glTranslated(270,105,0);
+		glScaled(0.3,0.6,0);
+		glTranslated(-270,-105,0);
+		man();
+	glPopMatrix();
+}
+void sky()
+{
+	glColor3f(1.0,1.0,1.0);
+	glBegin(GL_POLYGON);
+	glVertex2i(0,350);
+	glVertex2i(0,500);
+	glVertex2i(500,500);
+	glVertex2i(500,200);
+	glVertex2i(180,200);
+    glVertex2i(50,350);
+	glVertex2i(0,350);
+	glEnd();
+}
+void sea()
+{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0.3,0.4,1.0);
+	glBegin(GL_POLYGON);//body
+	glVertex2i(0,500);
+	glVertex2i(500,500);
+	glVertex2i(500,0);
+	glVertex2i(0,0);
+    glVertex2i(0,500);
+	glEnd();
+}
+void man()
+{
+	glColor3ub(0,0,0);
+	glPushMatrix();
+		glTranslatef(270,105,0);
+		glutSolidTorus(1,15,100,90);
+
+	glPopMatrix();
+//fill face
+	glColor3ub(255,191,128);
+	glPushMatrix();
+		glTranslatef(270,105,0);
+		glutSolidTorus(7,7,100,90);
+	glPopMatrix();
+//draw nose  eyebrow
+	glColor3ub(0,0,0);
+	glBegin(GL_LINES);
+		glVertex2i(270,107);
+		glVertex2i(270,100);
+ 		glVertex2i(261,113);
+		glVertex2i(267,113);
+ 		glVertex2i(273,113);
+		glVertex2i(279,113);
+	glEnd();
+ // eyes
+	glBegin(GL_POLYGON);
+		glVertex2i(263,111);
+		glVertex2i(265,111);
+		glVertex2i(265,109);
+		glVertex2i(263,109);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2i(275,111);
+		glVertex2i(277,111);
+		glVertex2i(277,109);
+		glVertex2i(275,109);
+	glEnd();
+ // mouth
+	glBegin(GL_POLYGON);
+		glVertex2i(266,97);
+		glVertex2i(270,95);
+		glVertex2i(274,97);
+		glVertex2i(270,95);
+	glEnd();
+//shirt
+	 glBegin(GL_POLYGON);
+		glColor3ub(55,50,70);
+		glVertex2i(259,90);
+		glVertex2i(281,90);
+		glVertex2i(296,79);
+		glVertex2i(291,71);
+		glVertex2i(286,75);
+		glVertex2i(286,55);
+		glVertex2i(254,55);
+		glVertex2i(254,75);
+		glVertex2i(249,70);
+		glVertex2i(244,79);
+	glEnd();
+//hands
+	glBegin(GL_POLYGON);
+		glColor3ub(255,191,128);
+		glVertex2i(295,78);
+		glVertex2i(305,63);
+		glVertex2i(297,64);
+		glVertex2i(292,72);
+	glEnd();
+	glBegin(GL_POLYGON);
+		 glVertex2i(305,63);
+		glVertex2i(286,48);
+		 glVertex2i(286,55);
+		 glVertex2i(297,64);
+	glEnd();
+	//glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINES);
+	glColor3f(0.0,0.0,0.0);
+
+	glVertex2i(286,55);
+	glVertex2i(340,55);
+	glEnd();
+	glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	//glPointSize(250.0);
+	glVertex2i(340,55);
+	glEnd();
+	glBegin(GL_LINES);
+
+	glVertex2i(340,55);
+	glVertex2i(340,1);
+	glVertex2i(340,1);
+	glVertex2i(333,1);
+	glVertex2i(333,1);
+	glVertex2i(333,-8);
+    glVertex2i(333,-8);
+    glVertex2i(340,-8);
+    glVertex2i(340,-8);
+    glVertex2i(340,-4);
+   glVertex2i(340,-4);
+   glVertex2i(337,-4);
+	glEnd();
+//hands2
+	glBegin(GL_POLYGON);
+glColor3ub(255,191,128);
+		glVertex2i(245,78);
+		glVertex2i(235,63);
+		glVertex2i(243,64);
+		glVertex2i(248,72);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex2i(235,63);
+		glVertex2i(254,48);
+		glVertex2i(254,55);
+		glVertex2i(243,64);
+	glEnd();
+
+ // belt
+	glBegin(GL_POLYGON);
+		glColor3ub(100,120,130);
+		glVertex2i(286,55);
+		glVertex2i(254,55);
+		glVertex2i(254,50);
+		glVertex2i(286,50);
+	glEnd();
+// collar
+	glBegin(GL_POLYGON);
+		glColor3ub(200,140,110);
+		glVertex2i(259,90);
+		glVertex2i(281,90);
+		glVertex2i(276,80);
+		glVertex2i(264,80);
+	glEnd();
+	glBegin(GL_TRIANGLES);
+		glColor3ub(20,140,110);
+		glVertex2i(270,87);
+		glVertex2i(275,80);
+		glVertex2i(265,80);
+	glEnd();
+
+// pant
+	glBegin(GL_POLYGON);
+		glColor3ub(10,10,10);
+		glVertex2i(285,50);
+		glVertex2i(254,50);
+		glVertex2i(250,15);
+		glVertex2i(260,15);
+		glVertex2i(263,48);
+		glVertex2i(280,15);
+		glVertex2i(290,15);
+	glEnd();
+}
+void scaleman1()
+{
+	glPushMatrix();
+	glTranslated(-250.0,200.0,0.0);
+	glScaled(0.9,0.9,0);
+	man();
+	glPopMatrix();
+glFlush();
+}
+void scalefishfood()
+{
+  glPushMatrix();
+glScaled(0.6,0.5,0.0);
+	glTranslated(250,515,0);
+	foodeatingfish();
+	glPopMatrix();
+}
+void foodeatingfish()
+{
+glColor3f(0.256,1.0,0.693);//for food eating fish body
+glBegin(GL_POLYGON);
+glVertex2i(370,375);
+glVertex2i(370,330.5);
+glVertex2i(330,330.5);
+glVertex2i(340,390);
+glVertex2i(360.5,390);
+glVertex2i(355,370);
+glVertex2i(370,375);
+glEnd();
+glColor3f(0.6,0.8,0.5);//right fin
+glBegin(GL_POLYGON);
+glVertex2i(370,335.5);
+glVertex2i(365,300);
+glVertex2i(360.5,335.5);
+glEnd();
+glColor3f(0.6,0.8,0.5);//left fin
+glBegin(GL_POLYGON);
+glVertex2i(345,390);
+glVertex2i(325,400);
+glVertex2i(340,380);
+glEnd();
+glColor3f(0.6,0.8,0.5);//tail
+glBegin(GL_POLYGON);
+glVertex2i(335,330.5);
+glVertex2i(335.5,300);
+glVertex2i(315.5,350);
+glVertex2i(335,330.5);
+glEnd();
+glBegin(GL_POINTS);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2i(360,370);
+	glEnd();
+}
+void display5()
+{
+	 glClear(GL_COLOR_BUFFER_BIT);
+	 glClearColor(1.0,1.0,1.0,1.0);
+	 sky();
+	land();
+	water();
+	scaleman2();
+	scalefish13();
+	glFlush();
+}
+	void display4(void)
+{
+     x=0.0;y=10.0;
+	    glClear(GL_COLOR_BUFFER_BIT);
+     glClearColor(0.0,0.5,0.9,0.0);
+	for( int i=0;i<=5800;i++)
+	{
+		{
+			glClear(GL_COLOR_BUFFER_BIT);
+			wire();
+			scalefishfood();
+		glPushMatrix();
+		glPushMatrix();
+        glPushMatrix();
+		glPushMatrix();
+		glTranslatef(x,0.0,0.0);
+		scalefish11();
+		x=x-0.3;
+		glPopMatrix();
+		glPopMatrix();
+           glPopMatrix();
+		glPopMatrix();
+		glPushMatrix();
+		glPushMatrix();
+         glPushMatrix();
+		glPushMatrix();
+		glTranslatef(y,0.0,0.0);
+		y=y+0.3;
+		scalefish12();
+		glPopMatrix();
+        glPopMatrix();
+		glPopMatrix();
+		glPopMatrix();
+		glFlush();
+		}
+	if(x<-675)
+{	x=300;
+}
+if(y>350)
+{y=-675;}
+
+		glFlush();
+	}
+glClear(GL_COLOR_BUFFER_BIT);
+	     wire();
+		 scalefishfood();
+		 scalefish11();
+         scalefish12();
+	glFlush();
+}
+
+void display3(void)
+{
+	x=0.0,y=10.0;
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0.0,0.5,0.9,0.0);
+    wire();
+	for( int i=0;i<4000;i++)
+	{
+		{
+            glClear(GL_COLOR_BUFFER_BIT);
+            wire();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+
+            glTranslatef(x,0.0,0.0);
+            scalefish11();
+            x=x-0.3;
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glTranslatef(y,0.0,0.0);
+            y=y+0.3;
+            scalefish12();
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glFlush();
+        }
+        if(x<-675)
+	        x=300;
+
+        if(y>350)
+            y=-675;
+	}
+	glClear(GL_COLOR_BUFFER_BIT);
+    wire();
+    scalefish11();
+    scalefish12();
+    glFlush();
+}
+void display1(void)
+{
+	 glClear(GL_COLOR_BUFFER_BIT);
+	  for( int i=0;i<=5000;i++)
+	{
+		{
+			glClear(GL_COLOR_BUFFER_BIT);
+            sea();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glTranslatef(x,0.0,0.0);
+            scalefish11();
+            x=x-0.4;
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glPushMatrix();
+            glTranslatef(y,0.0,0.0);
+            scalefish12();
+            y=y+0.3;
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glPopMatrix();
+            glFlush();
+		}
+		if(x<-675)
+            x=300;
+
+        if(y>350)
+            y=-675;
+	}
+    glClear(GL_COLOR_BUFFER_BIT);
+    sea();
+    scalefish11();
+    scalefish12();
+	glFlush();
+}
+void display2(void)
+{
+	for( int i=0;i<700;i++)
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+		sky();
+		land();
+		water();
+		glPushMatrix();
+        glTranslatef(x,0.0,0.0);
+        scaleman1();
+        x=x+0.2;
+        glPopMatrix();
+        glFlush();
+    }
+    x=0;
+	glFlush();
+}
+void display7(void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_POLYGON);
+	glColor3f(0.9,0.456,0.5);
+	glVertex2i(0,0);
+	glVertex2i(0,500);
+	glVertex2i(500,500);
+	glVertex2i(500,0);
+	glEnd();
+    glColor3f(1.0,1.0,0.0);
+	glRasterPos2i(175,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'F');
+	glRasterPos2i(200,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'I');
+	glRasterPos2i(225,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'S');
+	glRasterPos2i(250,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'H');
+	glRasterPos2i(275,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'I');
+	glRasterPos2i(300,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'N');
+	glRasterPos2i(325,350);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'G');
+	glEnd();
+	glColor3f(0.0,0.0,1.0);
+     glRasterPos2i(73,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'S');
+	glRasterPos2i(78,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'H');
+	glRasterPos2i(85,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+	glRasterPos2i(92,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'R');
+	glRasterPos2i(97,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+	glRasterPos2i(104,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'N');
+	glRasterPos2i(110,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+   glRasterPos2i(115,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'G');
+    glRasterPos2i(121,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'O');
+	glRasterPos2i(127,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'U');
+	glRasterPos2i(132,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'D');
+	glRasterPos2i(137,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+	glEnd();
+    glColor3f(0.0,0.0,1.0);
+     glRasterPos2i(348,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'S');
+	glRasterPos2i(353,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'H');
+	glRasterPos2i(362,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'I');
+	glRasterPos2i(365,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'L');
+	glRasterPos2i(370,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'P');
+	glRasterPos2i(376,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+	glRasterPos2i(380,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,' ');
+	glRasterPos2i(385,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'T');
+    glRasterPos2i(390,250);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,' ');
+ 	 glRasterPos2i(395,250);
+ 	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'B');
+ 	glEnd();
+   glColor3f(0.0,0.5,0.0);
+   glRasterPos2i(75,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'1');
+	glRasterPos2i(80,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'7');
+	glRasterPos2i(85,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'G');
+	glRasterPos2i(92.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+    glRasterPos2i(97.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'E');
+     glRasterPos2i(102,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'C');
+	glRasterPos2i(108,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'9');
+	glRasterPos2i(112,225);
+ 	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'0');
+   glRasterPos2i(117.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'6');
+   glRasterPos2i(122.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'2');
+   glEnd();
+  glColor3f(0.0,0.5,0.0);
+	glRasterPos2i(350,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'1');
+	glRasterPos2i(355,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'7');
+	glRasterPos2i(360,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'G');
+	glRasterPos2i(367.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'A');
+	glRasterPos2i(372.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'E');
+	glRasterPos2i(378.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'C');
+	glRasterPos2i(384,225);
+ 	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'9');
+   glRasterPos2i(388,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'0');
+    glRasterPos2i(392.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'6');
+	glRasterPos2i(397.5,225);
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,'3');
+	glRasterPos2i(402.5,225);
+	glEnd();
+    glFlush();
+}
+
+void display(void)
+{
+	static bool once = [](){
+        display7();
+        return true;
+	}();
+    glFlush();
+}
+int main(int argc,char **argv)
+{
+	glutInit(&argc,argv);
+	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowSize(1350,1350);
+    glutInitWindowPosition(0,0);
+	glutCreateWindow("Fishing");
+    int sub1 = glutCreateMenu(GoMenu);
+    glutAddMenuEntry("Fishes inside water",1);
+	glutAddMenuEntry("To see Scaleman",2);
+	glutAddMenuEntry("fishing",3);
+	glutAddMenuEntry("Catched fish",4);
+	glutAddMenuEntry("scaleman with fishes", 5);
+	glutCreateMenu(GoMenu);
+	glutAddSubMenu("Select Snapshots", sub1);
+	glutAddMenuEntry("Exit", 6);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
+	glutDisplayFunc(display);
+	init();
+    glutMainLoop();
+}
+
+void GoMenu(int value){
+    switch(value){
+
+        case 1: display1(); break;
+        case 2: display2(); break;
+        case 3: display3(); break;
+        case 4: display4(); break;
+        case 5: display5(); break;
+        case 6: exit(0); break;
+    }
+
+    glutPostRedisplay();
+}
+
+
